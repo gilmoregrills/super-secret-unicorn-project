@@ -1,5 +1,7 @@
 # super-secret-unicorn-project
 
+If it helps, it might actually be running at: ec2-34-240-61-22.eu-west-1.compute.amazonaws.com still
+
 ## Build steps:
 
 ### Terraform:
