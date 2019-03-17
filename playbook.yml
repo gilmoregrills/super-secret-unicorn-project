@@ -1,8 +1,25 @@
 ---
-- name: Example
-  hosts: "all"
+- hosts: all
   become: true
+  tasks:
+    - name: Install Docker
+      shell: apt install docker.io
 
-  roles:
-    - role: "nickjj.docker"
-      tags: ["docker"]
+    - name: Copy dockerfile
+      copy: src=Dockerfile dest=~/Dockerfile
+
+    - name: Copy server file
+      copy: src=main.go dest=~/main.go
+
+    - name: Copy assets
+      copy: src=assets/ dest=~/assets/
+
+    - name: build dockerfile
+      shell: docker build -t unicorn-service .
+      args:
+        chdir: ~/
+
+    - name: run docker container
+      shell: docker run -d -p 80:8080 unicorn-service
+      args:
+        chdir: ~/

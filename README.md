@@ -27,11 +27,13 @@ Once instances come up, add IPs to `hosts` file, test the connection with:
 
 Run ansible playbook to install docker, build the image and run it on the server(s)
 
+`ansible-playbook -i hosts playbook.yml`
+
 ### Test with Docker locally:
 
 `docker build -t unicorn-service .`
 
-`docker run -p 8080:8080 unicorn-service`
+`docker run -p 80:8080 unicorn-service`
 
 TODOs:
 * find way to dynamically fetch all the instances and apply the config to them
