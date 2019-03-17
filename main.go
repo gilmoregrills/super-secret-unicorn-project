@@ -17,9 +17,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
     images, _ := ioutil.ReadDir(fmt.Sprintf("%s/assets/", dir))
 
     maxImages := len(images)
-    img := rand.Intn(maxImages - 1) + 1
+    img := rand.Intn(maxImages) + 1
 
     path := fmt.Sprintf("%s/assets/%d.png", dir, img)
+    fmt.Println("Serving image from:")
+    fmt.Println(path)
 
     w.Header().Set("Content-Type", "image/jpeg")
     http.ServeFile(w, r, path)
