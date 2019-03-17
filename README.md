@@ -13,6 +13,7 @@ Example:
 `./build-backend.sh super-secret-unicorn-project eu-west-1`
 
 `terraform init -backend-config=<project-name>-backend`
+Example:
 `terraform init -backend-config=super-secret-unicorn-project-backend`
 
 `terraform apply -var-file=params.tfvars`
@@ -29,12 +30,8 @@ Run ansible playbook to install docker, build the image and run it on the server
 
 `ansible-playbook -i hosts playbook.yml`
 
-### Test with Docker locally:
+### If you wanna test with Docker locally:
 
 `docker build -t unicorn-service .`
 
 `docker run -p 80:8080 unicorn-service`
-
-TODOs:
-* find way to dynamically fetch all the instances and apply the config to them
-* automate with a main build script?

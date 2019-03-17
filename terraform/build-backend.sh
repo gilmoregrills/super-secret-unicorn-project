@@ -3,6 +3,9 @@
 #   example ./build_backend.sh name eu-west-1
 ###
 
+# Note: I stole a chunk of this script from another project, I just used it to
+# build my remote backend so I thought I'd best include it
+
 set -ie
 
 project_name=${1}
@@ -21,7 +24,7 @@ then
 fi
 
 # Create bucket
-# aws s3api create-bucket --bucket ${project_name}-tf-state --region ${region} --create-bucket-configuration LocationConstraint=${region}
+aws s3api create-bucket --bucket ${project_name}-tf-state --region ${region} --create-bucket-configuration LocationConstraint=${region}
 
 echo "Bucket created named: ${project_name}"
 
