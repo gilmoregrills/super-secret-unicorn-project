@@ -19,8 +19,20 @@ Example:
 
 `cd ..`
 
-### Docker:
+### Ansible:
+
+Once instances come up, add IPs to `hosts` file, test the connection with:
+
+`ansible py3-webserver -m ping -i hosts`
+
+Run ansible playbook to install docker, build the image and run it on the server(s)
+
+### Test with Docker locally:
 
 `docker build -t unicorn-service .`
 
-`docker run unicorn-service -p 80:8080 --name unicorn-server`
+`docker run -p 8080:8080 unicorn-service`
+
+TODOs:
+* find way to dynamically fetch all the instances and apply the config to them
+* automate with a main build script?

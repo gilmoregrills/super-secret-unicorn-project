@@ -1,7 +1,9 @@
 FROM golang:latest
 
-COPY main.go assets/ .
+COPY ./main.go /go/main.go
 
-ENTRYPOINT go run .
+COPY ./assets/ /go/assets/
+
+CMD ["go", "run", "/go/main.go"]
 
 EXPOSE 8080
